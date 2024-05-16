@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "Binary to Text",
+  "version": "1.0.0",
+  "permissions": ["contextMenus", "tabs"],
+  "background": {
+    "service_worker": "background/main.ts"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content/main.ts"],
+      "run_at": "document_start"
+    }
+  ]
+}
