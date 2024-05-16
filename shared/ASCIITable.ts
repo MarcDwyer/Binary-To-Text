@@ -1,3 +1,5 @@
+// Credit to https://www.rapidtables.com/code/text/ascii-table.html
+
 export const ASCIITable: Map<number, string> = new Map([
   [0, "NUL"],
   [1, "SOH"],

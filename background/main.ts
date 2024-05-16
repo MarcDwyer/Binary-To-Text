@@ -18,8 +18,9 @@ chrome.contextMenus.create({
   title: "Convert Binary to Text",
   contexts: ["selection"],
 });
-chrome.contextMenus.onClicked.addListener(async (info, tab) => {
-  const binaryTxt = info.selectionText ?? "1011";
+chrome.contextMenus.onClicked.addListener((info, tab) => {
+  if (!info.selectionText) return;
+  const binaryTxt = info.selectionText;
   const replacementTxt = binaryToText(binaryTxt);
   const data: ConvertIDPayload = {
     type: PayloadTypes.convertID,
