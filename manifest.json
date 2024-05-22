@@ -5,8 +5,7 @@
   "action": { "default_popup": "index.html" },
   "permissions": ["contextMenus", "tabs"],
   "background": {
-    "service_worker": "background/main.ts",
-    "scripts": "background/main.ts"
+    "service_worker": "background/main.ts"
   },
   "content_scripts": [
     {

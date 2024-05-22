@@ -24,6 +24,7 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
   if (!checkIfValidBinary(info.selectionText)) return;
   const binaryTxt = info.selectionText;
   const replacementTxt = binaryToText(binaryTxt);
+  console.log({ replacementTxt, binaryTxt });
   const data: ConvertIDPayload = {
     type: PayloadTypes.convertID,
     payload: { replacementTxt, binary: binaryTxt },
