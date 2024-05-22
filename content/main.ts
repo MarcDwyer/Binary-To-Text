@@ -1,6 +1,4 @@
-import { CONVERT_ID } from "../shared/identifiers";
 import { ConvertIDPayload, PayloadTypes } from "../shared/payloadTypes";
-import { generateRandomString } from "../util/generateRandomString";
 
 let lastElement: undefined | Element;
 
@@ -13,7 +11,12 @@ function handleSelection({ clientX, clientY }) {
 
 chrome.runtime.onMessage.addListener(({ payload, type }: ConvertIDPayload) => {
   if (lastElement && type === PayloadTypes.convertID) {
-    lastElement.textContent = payload.replacementTxt;
+    const textContent = lastElement.textContent;
+    const replacedText = textContent?.replace(
+      payload.binary,
+      payload.replacementTxt
+    );
+    lastElement.textContent = replacedText ?? textContent;
   }
 });
 

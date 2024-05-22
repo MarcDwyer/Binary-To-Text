@@ -6,4 +6,7 @@ type Payload<T> = {
   payload: T;
 };
 
-export type ConvertIDPayload = Payload<{ replacementTxt: string }>;
+export type ConvertIDPayload = Payload<{
+  replacementTxt: string;
+  binary: string;
+}>;

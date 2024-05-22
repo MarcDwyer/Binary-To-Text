@@ -1,5 +1,6 @@
 import { ConvertIDPayload, PayloadTypes } from "../shared/payloadTypes";
 import { ASCIITable } from "../shared/ASCIITable";
+import { checkIfValidBinary } from "../shared/checkIfValidBinary";
 
 function binaryToText(binaryText: string): string {
   // Parse the binary byte as an integer with base 2
@@ -20,11 +21,12 @@ chrome.contextMenus.create({
 });
 chrome.contextMenus.onClicked.addListener((info, tab) => {
   if (!info.selectionText) return;
+  if (!checkIfValidBinary(info.selectionText)) return;
   const binaryTxt = info.selectionText;
   const replacementTxt = binaryToText(binaryTxt);
   const data: ConvertIDPayload = {
     type: PayloadTypes.convertID,
-    payload: { replacementTxt },
+    payload: { replacementTxt, binary: binaryTxt },
   };
   chrome.tabs.sendMessage(tab?.id ?? -1, data);
 });

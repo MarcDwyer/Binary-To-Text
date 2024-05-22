@@ -2,9 +2,11 @@
   "manifest_version": 3,
   "name": "Binary to Text",
   "version": "1.0.0",
+  "action": { "default_popup": "index.html" },
   "permissions": ["contextMenus", "tabs"],
   "background": {
-    "service_worker": "background/main.ts"
+    "service_worker": "background/main.ts",
+    "scripts": "background/main.ts"
   },
   "content_scripts": [
     {
