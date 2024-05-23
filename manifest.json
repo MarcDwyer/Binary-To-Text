@@ -2,7 +2,15 @@
   "manifest_version": 3,
   "name": "Binary to Text",
   "version": "1.0.0",
-  "action": { "default_popup": "index.html" },
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": {
+      "16": "assets/icons/favicon-16x16.png",
+      "32": "assets/icons/favicon-32x32.png",
+      "128": "icons/favicon-192x192.png"
+    }
+  },
+
   "permissions": ["contextMenus", "tabs"],
   "background": {
     "service_worker": "background/main.ts"
